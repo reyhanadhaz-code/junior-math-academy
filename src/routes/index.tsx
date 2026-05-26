@@ -11,12 +11,12 @@ function Home() {
   const { t } = useLang();
   const cards = [
     { to: "/cartesian", icon: "📍", bg: "bg-primary/15", badge: "bg-primary", title: t.cards.cartesian.title, desc: t.cards.cartesian.desc, highlight: true },
-    { to: "/shapes", icon: "📐", bg: "bg-sunny/25", badge: "bg-sunny", title: t.cards.shapes.title, desc: t.cards.shapes.desc },
-    { to: "/shapes", search: { tab: "transform" }, icon: "🔄", bg: "bg-grass/25", badge: "bg-grass", title: t.cards.transform.title, desc: t.cards.transform.desc },
-    { to: "/history", icon: "📚", bg: "bg-tangerine/25", badge: "bg-tangerine", title: t.cards.history.title, desc: t.cards.history.desc },
-    { to: "/favorites", icon: "⭐", bg: "bg-bubble/25", badge: "bg-bubble", title: t.cards.favorites.title, desc: t.cards.favorites.desc },
-    { to: "/help", icon: "ℹ️", bg: "bg-grape/20", badge: "bg-grape", title: t.cards.help.title, desc: t.cards.help.desc },
-  ] as const;
+    { to: "/shapes", icon: "📐", bg: "bg-sunny/25", badge: "bg-sunny", title: t.cards.shapes.title, desc: t.cards.shapes.desc, highlight: false },
+    { to: "/shapes", icon: "🔄", bg: "bg-grass/25", badge: "bg-grass", title: t.cards.transform.title, desc: t.cards.transform.desc, highlight: false },
+    { to: "/history", icon: "📚", bg: "bg-tangerine/25", badge: "bg-tangerine", title: t.cards.history.title, desc: t.cards.history.desc, highlight: false },
+    { to: "/favorites", icon: "⭐", bg: "bg-bubble/25", badge: "bg-bubble", title: t.cards.favorites.title, desc: t.cards.favorites.desc, highlight: false },
+    { to: "/help", icon: "ℹ️", bg: "bg-grape/20", badge: "bg-grape", title: t.cards.help.title, desc: t.cards.help.desc, highlight: false },
+  ];
 
   return (
     <Layout>
