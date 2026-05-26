@@ -137,9 +137,10 @@ export const translations = {
       ],
     },
   },
-} as const;
+};
 
-type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: typeof translations["id"] };
+export type Dict = typeof translations.id;
+type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Dict };
 const LanguageContext = createContext<Ctx | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
