@@ -9,9 +9,33 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ShapesRouteImport } from './routes/shapes'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as CartesianRouteImport } from './routes/cartesian'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ShapesRoute = ShapesRouteImport.update({
+  id: '/shapes',
+  path: '/shapes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CartesianRoute = CartesianRouteImport.update({
   id: '/cartesian',
   path: '/cartesian',
@@ -26,31 +50,88 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cartesian': typeof CartesianRoute
+  '/favorites': typeof FavoritesRoute
+  '/help': typeof HelpRoute
+  '/history': typeof HistoryRoute
+  '/shapes': typeof ShapesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cartesian': typeof CartesianRoute
+  '/favorites': typeof FavoritesRoute
+  '/help': typeof HelpRoute
+  '/history': typeof HistoryRoute
+  '/shapes': typeof ShapesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cartesian': typeof CartesianRoute
+  '/favorites': typeof FavoritesRoute
+  '/help': typeof HelpRoute
+  '/history': typeof HistoryRoute
+  '/shapes': typeof ShapesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cartesian'
+  fullPaths:
+    | '/'
+    | '/cartesian'
+    | '/favorites'
+    | '/help'
+    | '/history'
+    | '/shapes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cartesian'
-  id: '__root__' | '/' | '/cartesian'
+  to: '/' | '/cartesian' | '/favorites' | '/help' | '/history' | '/shapes'
+  id:
+    | '__root__'
+    | '/'
+    | '/cartesian'
+    | '/favorites'
+    | '/help'
+    | '/history'
+    | '/shapes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CartesianRoute: typeof CartesianRoute
+  FavoritesRoute: typeof FavoritesRoute
+  HelpRoute: typeof HelpRoute
+  HistoryRoute: typeof HistoryRoute
+  ShapesRoute: typeof ShapesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/shapes': {
+      id: '/shapes'
+      path: '/shapes'
+      fullPath: '/shapes'
+      preLoaderRoute: typeof ShapesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cartesian': {
       id: '/cartesian'
       path: '/cartesian'
@@ -71,7 +152,21 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CartesianRoute: CartesianRoute,
+  FavoritesRoute: FavoritesRoute,
+  HelpRoute: HelpRoute,
+  HistoryRoute: HistoryRoute,
+  ShapesRoute: ShapesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
