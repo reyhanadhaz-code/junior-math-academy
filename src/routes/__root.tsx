@@ -72,14 +72,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "MathKids — Belajar Matematika Seru!" },
+      { name: "description", content: "Website edukasi matematika interaktif untuk siswa SD: Kartesius, Bangun Datar, Transformasi, dan Riwayat." },
+      { name: "author", content: "MathKids" },
+      { property: "og:title", content: "MathKids — Belajar Matematika Seru!" },
+      { property: "og:description", content: "Website edukasi matematika interaktif untuk siswa SD." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+    ],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8C%9F%3C%2Ftext%3E%3C%2Fsvg%3E" },
     ],
     links: [
       {
