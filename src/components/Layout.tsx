@@ -8,9 +8,6 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="flex-1 mx-auto w-full max-w-6xl px-4 py-6 animate-page">
         {children}
       </main>
-      <footer className="text-center text-xs text-muted-foreground py-6">
-        Made with 💙 for super students
-      </footer>
     </div>
   );
 }
